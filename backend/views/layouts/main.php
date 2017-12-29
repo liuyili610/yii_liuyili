@@ -36,10 +36,16 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => '首页', 'url' => ['/goods/index']],
+        //商品品牌
+        ['label' => '商品品牌', 'url' => ['/brand/index']],
+        //文章列表
+        ['label' => '文章查看', 'url' => ['/article/index']],
+        //分类列表
+        ['label' => '商品分类', 'url' => ['/goods-category/index']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => '登录', 'url' => ['/site/login']];
     } else {
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')

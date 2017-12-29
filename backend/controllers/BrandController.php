@@ -162,20 +162,20 @@ class BrandController extends Controller
 
     public function actionUpload()
     {
-        // 正确时， 其中 attachment 指的是保存在数据库中的路径，url 是该图片在web可访问的地址
+//         正确时， 其中 attachment 指的是保存在数据库中的路径，url 是该图片在web可访问的地址
 //        {"code": 0, "url": "http://domain/图片地址", "attachment": "图片地址"}
 
-        //得到上传对象
-//        $upload = UploadedFile::getInstanceByName('file');
-//        //拼接路径
-//        if($upload){
-//            $path = "images/brand/".uniqid().".".$upload->extension;
-//            if ($upload->saveAs($path,false)) {
-//                $result = ['code'=>0,'url'=>'/'.$path,'attachment'=>$path];
-//
-//            }
-//            return json_encode($result);
-//        }
+//        得到上传对象
+        $upload = UploadedFile::getInstanceByName('file');
+        //拼接路径
+        if($upload){
+            $path = "images/brand/".uniqid().".".$upload->extension;
+            if ($upload->saveAs($path,false)) {
+                $result = ['code'=>0,'url'=>'/'.$path,'attachment'=>$path];
+
+            }
+            return json_encode($result);
+        }
         $config = [
             'accessKey' => 'EAd29Qrh05q78_cZhajAWcbB1wYCBLyHLqkanjOG',//AK
             'secretKey' => '_R5o3ZZpPJvz8bNGBWO9YWSaNbxIhpsedbiUtHjW',//SK
@@ -184,18 +184,17 @@ class BrandController extends Controller
             'area' => Qiniu::AREA_HUADONG//区域
         ];
 
-        $qiniu = new Qiniu($config);
-        $picname = uniqid();
-        $qiniu->uploadFile($_FILES['file']['temp_name'],$picname);
-        $url = $qiniu->getLink($picname);
-        //返回的结果
-        $result = [
-            'code' => 0,
-            'url' => $url,
-            'attachment' => $url
-
-        ];
-        return json_encode($result);
+//        $qiniu = new Qiniu($config);
+//        $picname = uniqid();
+//        $qiniu->uploadFile($_FILES['file']['tmp_name'],$picname);
+//        $url = $qiniu->getLink($picname);
+//        //返回的结果
+//        $result = [
+//            'code' => 0,
+//            'url' => $url,
+//            'attachment' => $url
+//        ];
+//        return json_encode($result);
 
     }
 

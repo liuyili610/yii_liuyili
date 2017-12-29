@@ -18,7 +18,7 @@
         <td><?=$brand->name?></td>
         <td><?=$brand->sort?></td>
 
-        <td><?=\yii\bootstrap\Html::img('/'.$brand->logo,['width'=>'50'])?></td>
+        <td><?=\yii\bootstrap\Html::img("/".$brand->logo,['width'=>'50'])?></td>
         <td><?=$brand->intro?></td>
         <td><a href="<?=yii\helpers\Url::to(['edit','id'=>$brand->id])?>"><span class="btn btn-info">品牌编辑</span></a>||<a href="<?=yii\helpers\Url::to(['del','id'=>$brand->id])?>"><span class="btn btn-danger">删除品牌</span></a></td>
     </tr>

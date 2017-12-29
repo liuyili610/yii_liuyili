@@ -49,4 +49,9 @@ class Article extends ActiveRecord
     {
         return $this->hasOne(ArticleCate::className(),['id'=>'cate_id']);
     }
+    //一对一关联内容表
+    public function getCotn()
+    {
+        return $this->hasOne(ArticleDetail::className(),['article_id'=>'id']);
+    }
 }
