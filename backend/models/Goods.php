@@ -9,10 +9,12 @@
 namespace backend\models;
 
 
+use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 
 class Goods extends ActiveRecord
 {
+    public $imgFile;
     public static function tableName()
     {
         return 'goods';
@@ -21,9 +23,9 @@ class Goods extends ActiveRecord
     public function rules()
     {
         return [
-            [['name','sn','goods_category_id','brand_id','market_price','shop_price','stock','is_on_sale','sort','inputtime'], 'required'],
+            [['name','market_price','shop_price','stock','is_on_sale','sort'], 'required'],
             [['sort', 'goods_category_id','brand_id','is_on_sale'], 'integer'],
-            [['logo','status'],'safe']
+            [['logo','status','imgFile','sn','inputtime'],'safe']
 //            [['fileImg'],'image','extensions' => 'gif,jpg,png','skipOnEmpty' => true]
         ];
     }
@@ -47,11 +49,12 @@ class Goods extends ActiveRecord
             'stock'=>'库存',
             'is_on_sale'=>'是否上架',
             'inputtime'=>'录入时间',
+            'imgFile'=>'多图上传'
         ];
     }
 
     //一对一品牌
-    public function getBrand()
+    public function getBrands()
     {
         return $this->hasOne(Brand::className(),['id'=>'brand_id']);
     }
@@ -62,4 +65,17 @@ class Goods extends ActiveRecord
 //        return $this->hasOne(Brand::className(),['id'=>'brand_id']);
         return $this->hasOne(GoodsCategory::className(),['id'=>'goods_category_id']);
     }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class'=>TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT=>['inputtime']
+                ]
+            ]
+        ];
+    }
+
 }

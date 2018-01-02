@@ -1,5 +1,26 @@
-<a href="<?=yii\helpers\Url::to(['add'])?>"><span class="btn btn-success col-lg-1">添加商品</span></a>
-<a href="<?=yii\helpers\Url::to(['back'])?>"><span class="btn btn-info col-lg-1">回收站</span></a>
+<h1>商品列表</h1>
+<div class="row">
+    <div class="">
+        <a href="<?=yii\helpers\Url::to(['add'])?>"><span class="btn btn-success col-lg-1">添加商品</span></a>
+        <a href="<?=yii\helpers\Url::to(['back'])?>"><span class="btn btn-info col-lg-1">回收站</span></a>
+    </div>
+    <div class="pull-right">
+        <!--搜索表单开始-->
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="exampleInputName2">价格区间</label>
+                <input type="text" size="4" class="form-control" name="minpri" id="exampleInputName2" placeholder="最低价格">--
+                <input type="text" size="4" class="form-control" name="maxpri" id="exampleInputName2" placeholder="最高价格">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail2">关键字</label>
+                <input type="text" class="form-control" name="keyword" id="exampleInputEmail2" placeholder="可查询关键字或货号">
+            </div>
+            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search">搜索</span></button>
+        </form>
+        <!--搜索表单结束-->
+    </div>
+</div>
 <table class="table table-responsive table-bordered table-striped">
     <tr>
         <td>商品编号</td>
@@ -27,7 +48,7 @@
 
             <td><?=\yii\bootstrap\Html::img("/".$good->logo,['width'=>'50'])?></td>
             <td><?=$good->cate->name?></td>
-            <td><?=$good->brand->name?></td>
+            <td><?=$good->brands->name?></td>
             <td><?=$good->market_price?></td>
             <td><?=$good->shop_price?></td>
             <td><?=$good->stock?></td>
@@ -47,3 +68,7 @@
     endforeach;
     ?>
 </table>
+</table>
+<?=\yii\widgets\LinkPager::widget(
+    ['pagination' => $pages]
+)?>
