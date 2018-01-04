@@ -17,6 +17,8 @@ use yii\web\IdentityInterface;
  */
 class Admin extends \yii\db\ActiveRecord implements IdentityInterface
 {
+    public $group;
+    public $rememberMe = true;
     /**
      * @inheritdoc
      */
@@ -25,15 +27,24 @@ class Admin extends \yii\db\ActiveRecord implements IdentityInterface
         return 'admin';
     }
 
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        return array_merge($scenarios, [
+            'create'=>['username','password','email'],
+            'update'=>['username','email']
+        ]);
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['name','password','email'],'required'],
-
-            [['add_time','last_login_ip','last_login_time'],'safe'],
+            [['username','password','email'],'required'],
+            [['password'],'required','on' => 'update'],
+            [['add_time','last_login_ip','last_login_time','rememberMe','group'],'safe'],
 
         ];
     }
@@ -45,7 +56,7 @@ class Admin extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             'id' => '用户编号',
-            'name' => '用户姓名',
+            'username' => '用户姓名',
             'password' => '用户密码',
             'salt' => '加严加密',
             'email' => '用户邮箱',

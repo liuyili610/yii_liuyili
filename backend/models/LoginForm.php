@@ -15,7 +15,7 @@ class LoginForm extends Model
 {
     public $password;
     public $username;
-    public $rememberMe;
+    public $rememberMe =true;
 
     public function rules()
     {

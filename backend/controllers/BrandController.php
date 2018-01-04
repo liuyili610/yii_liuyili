@@ -9,6 +9,7 @@
 namespace backend\controllers;
 
 
+use backend\filters\CheckFilter;
 use backend\models\Brand;
 use yii\data\Pagination;
 use yii\web\Controller;

@@ -33,7 +33,7 @@
         <td><?=$article->sort?></td>
         <td><a href="<?=yii\helpers\Url::to(['article/getcon','id'=>$article->id])?>"><span class="btn btn-info">查看文章</span></a></td>
         <td><?=$article->cotn->count?></td>
-        <td><a href="<?=yii\helpers\Url::to(['article/edit','id'=>$article->id])?>"><span class="btn btn-info">编辑文章</span></a>||<a href="<?=yii\helpers\Url::to(['article/del','id'=>$article->id])?>"><span class="btn btn-danger">删除文章</span></a></td>
+        <td><a href="<?=yii\helpers\Url::to(['article/edit','id'=>$article->id])?>"><span class="btn btn-info">编辑</span></a>||<a href="<?=yii\helpers\Url::to(['article/del','id'=>$article->id])?>"><span class="btn btn-danger">删除</span></a></td>
     </tr>
     <?php
     endforeach;

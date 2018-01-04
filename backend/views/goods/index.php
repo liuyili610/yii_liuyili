@@ -62,7 +62,7 @@
             <td><?=$good->sort?></td>
             <td><a href="<?=yii\helpers\Url::to(['goods/back','id'=>$good->id])?>"><span class="btn btn-danger">加入回收站</span></a></td>
             <td><?=$good->inputtime?></td>
-            <td><a href="<?=yii\helpers\Url::to(['edit','id'=>$good->id])?>"><span class="btn btn-info">品牌编辑</span></a>||<a href="<?=yii\helpers\Url::to(['del','id'=>$good->id])?>"><span class="btn btn-danger">删除品牌</span></a></td>
+            <td><a href="<?=yii\helpers\Url::to(['edit','id'=>$good->id])?>"><span class="btn btn-info">编辑</span></a>||<a href="<?=yii\helpers\Url::to(['del','id'=>$good->id])?>"><span class="btn btn-danger">删除</span></a></td>
         </tr>
         <?php
     endforeach;

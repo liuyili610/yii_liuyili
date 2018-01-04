@@ -230,7 +230,13 @@ use yii\helpers\Html;
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <span class="hidden-xs"><?php
+                            if(empty(Yii::$app->user->identity->username)){
+                                echo "用户信息";
+                            }else{
+                                echo Yii::$app->user->identity->username;
+                            }
+                            ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -258,12 +264,12 @@ use yii\helpers\Html;
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a href="<?=yii\helpers\Url::to(['admin/login'])?>" class="btn btn-default btn-flat">登录</a>
                             </div>
                             <div class="pull-right">
                                 <?= Html::a(
-                                    'Sign out',
-                                    ['/site/logout'],
+                                    '退出登录',
+                                    ['admin/logout'],
                                     ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
                                 ) ?>
                             </div>
