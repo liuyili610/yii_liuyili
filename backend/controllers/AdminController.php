@@ -136,6 +136,6 @@ class AdminController extends Controller
     public function actionLogout()
     {
         \Yii::$app->user->logout(true);
-        return $this->redirect(['admin/index']);
+        return $this->redirect(['admin/login']);
     }
 }
