@@ -15,15 +15,23 @@ return [
     'modules' => [
         'rbac' => [
         'class' => 'mdm\admin\Module',
-        'layout' => 'left-menu', // defaults to null, using the application's layout without the menu
+
+//        'layout' => 'left-menu', //这里是关闭开启调整rbac页面那个菜单的开关 defaults to null, using the application's layout without the menu
             // other available values are 'right-menu' and 'top-menu'
-//        'mainLayout' => '@app/views/layouts/main.php',
+            //这里是开启和关闭整体样式的
+        'mainLayout' => '@app/views/layouts/main.php',
+
+
+
 //        'menus' => [
 //            'assignment' => [
 //            'label' => 'Grant Access' // change label
 //                ],
-////            'route' => null, // disable menu
+//            'route' => null, // disable menu
 //            ],
+
+
+
     ]],
     'components' => [
         'request' => [
